@@ -29,7 +29,7 @@ export function Post(props: Props) {
         <Button
           chromeless
           onPress={() => {
-            router.navigate('/new-comment');
+            router.navigate('/newcomment');
           }}
         >
           <MessageSquare />

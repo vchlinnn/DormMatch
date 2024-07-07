@@ -7,7 +7,10 @@ void SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   return (
     <AppProvider onInitialized={() => SplashScreen.hideAsync()}>
-      <Stack />
+      <Stack initialRouteName="signup">
+        <Stack.Screen name="signup" options={{ headerShown: false }} />
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+      </Stack>
     </AppProvider>
   );
 }
