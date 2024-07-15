@@ -1,7 +1,7 @@
 {
   "name": "hello-rn",
   "version": "0.0.0",
-  "main": "src/index.ts",
+  "main": "src/app/signup.tsx",
   "scripts": {
     "start": "expo start",
     "db:reset": "tsx src/scripts/reset.ts",
