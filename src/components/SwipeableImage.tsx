@@ -1,36 +1,87 @@
-import React from 'react'
-import { View, Image, StyleSheet, Text } from 'react-native'
-import { FontAwesome } from '@expo/vector-icons'
+import React from 'react';
+import {
+  Image,
+  ImageStyle,
+  StyleSheet,
+  Text,
+  TextStyle,
+  View,
+  ViewStyle,
+} from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
-export default function SwipeableImage({ user, willLike, willPass }) {
+// Define the type for the user object
+type AppUser = {
+  name: {
+    first: string;
+    last: string;
+  };
+  picture: {
+    large: string;
+  };
+  dob: {
+    date: string;
+    age: number;
+  };
+  location: {
+    city: string;
+    country: string;
+  };
+};
+
+// Define the type for the component props
+type SwipeableImageProps = {
+  user: AppUser;
+  willLike: boolean;
+  willPass: boolean;
+};
+
+const SwipeableImage: React.FC<SwipeableImageProps> = ({
+  user,
+  willLike,
+  willPass,
+}) => {
   return (
     <View>
-      <Image source={{ uri: user.picture.large }} style={styles.photo} />
+      <Image
+        source={{ uri: user.picture.large }}
+        style={styles.photo as ImageStyle}
+      />
       {willLike && (
-        <View style={styles.likeBox}>
+        <View style={styles.likeBox as ViewStyle}>
           <Text style={{ ...styles.textPrimary, color: '#64EDCC' }}>LIKE</Text>
         </View>
       )}
       {willPass && (
-        <View style={styles.passBox}>
+        <View style={styles.passBox as ViewStyle}>
           <Text style={{ ...styles.textPrimary, color: '#F06795' }}>NOPE</Text>
         </View>
       )}
-      <View style={styles.textContainer}>
-        <View style={styles.textRow}>
-          <Text style={[styles.textPrimary, styles.textShadow]}>{user.name.first}</Text>
-          <Text style={[styles.textSecondary, styles.textShadow]}>{user.dob.age}</Text>
+      <View style={styles.textContainer as ViewStyle}>
+        <View style={styles.textRow as ViewStyle}>
+          <Text style={[styles.textPrimary, styles.textShadow] as TextStyle[]}>
+            {user.name.first}
+          </Text>
+          <Text
+            style={[styles.textSecondary, styles.textShadow] as TextStyle[]}
+          >
+            {user.dob.age}
+          </Text>
         </View>
-        <View style={styles.textRow}>
-          <FontAwesome name="map-marker" size={20} color="white"></FontAwesome>
-          <Text style={[styles.textSecondary, styles.textShadow]}>{user.location.city}</Text>
+        <View style={styles.textRow as ViewStyle}>
+          <FontAwesome name="map-marker" size={20} color="white" />
+          <Text
+            style={[styles.textSecondary, styles.textShadow] as TextStyle[]}
+          >
+            {user.location.city}
+          </Text>
         </View>
       </View>
     </View>
-  )
-}
+  );
+};
 
-const boxStyle = {
+const boxStyle: ViewStyle = {
   position: 'absolute',
   top: '50%',
   paddingTop: 10,
@@ -39,7 +90,7 @@ const boxStyle = {
   paddingRight: 20,
   borderWidth: 3,
   borderRadius: 10,
-}
+};
 
 const styles = StyleSheet.create({
   likeBox: {
@@ -81,4 +132,6 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
   },
-})
+});
+
+export default SwipeableImage;

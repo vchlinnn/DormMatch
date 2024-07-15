@@ -1,22 +1,45 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
 import axios from 'axios';
 import Constants from 'expo-constants';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import {
+  GestureHandlerRootView,
+  Swipeable,
+} from 'react-native-gesture-handler';
 
 import BottomBar from '../components/BottomBar';
 import Swipes from '../components/Swipes';
 import TopBar from '../components/TopBar';
 
+// Define the type for the user object
+type AppUser = {
+  name: {
+    first: string;
+    last: string;
+  };
+  picture: {
+    large: string;
+  };
+  dob: {
+    date: string;
+    age: number;
+  };
+  location: {
+    city: string;
+    country: string;
+  };
+};
+
 export default function App() {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<AppUser[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const swipesRef = useRef<Swipeable>(null); // Replace 'any' with 'Swipeable'
 
-  const swipesRef = useRef(null);
-
-  async function fetchUsers() {
+  const fetchUsers = useCallback(async () => {
     try {
-      const { data } = await axios.get('https://randomuser.me/api/?results=50');
+      const { data } = await axios.get<{ results: AppUser[] }>(
+        'https://randomuser.me/api/?results=50',
+      );
       setUsers(data.results);
     } catch (error) {
       console.log(error);
@@ -24,11 +47,11 @@ export default function App() {
         { text: 'Retry', onPress: () => fetchUsers() },
       ]);
     }
-  }
+  }, []); // Add dependencies here if needed
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    fetchUsers().catch((error) => console.error(error));
+  }, [fetchUsers]);
 
   function handleLike() {
     console.log('like');
@@ -46,10 +69,15 @@ export default function App() {
   }
 
   function handleLikePress() {
-    swipesRef.current.openLeft();
+    if (swipesRef.current) {
+      swipesRef.current.openLeft();
+    }
   }
+
   function handlePassPress() {
-    swipesRef.current.openRight();
+    if (swipesRef.current) {
+      swipesRef.current.openRight();
+    }
   }
 
   return (

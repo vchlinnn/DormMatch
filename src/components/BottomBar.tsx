@@ -1,21 +1,30 @@
-import React from 'react'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
-import { FontAwesome } from '@expo/vector-icons'
+import React from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
-export default function BottomBar({ handleLikePress, handlePassPress }) {
+// Define the type for the props
+type BottomBarProps = {
+  handleLikePress: () => void;
+  handlePassPress: () => void;
+};
+
+const BottomBar: React.FC<BottomBarProps> = ({
+  handleLikePress,
+  handlePassPress,
+}) => {
   return (
     <View style={styles.container}>
       <View />
       <TouchableOpacity style={styles.button} onPress={handlePassPress}>
-        <FontAwesome name="times" size={27} color="#F06795"></FontAwesome>
+        <FontAwesome name="times" size={27} color="#F06795" />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
-        <FontAwesome name="heart" size={27} color="#64EDCC" onPress={handleLikePress}></FontAwesome>
+      <TouchableOpacity style={styles.button} onPress={handleLikePress}>
+        <FontAwesome name="heart" size={27} color="#64EDCC" />
       </TouchableOpacity>
       <View />
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -40,4 +49,6 @@ const styles = StyleSheet.create({
     shadowRadius: 6.46,
     elevation: 9,
   },
-})
+});
+
+export default BottomBar;
