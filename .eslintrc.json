@@ -93,6 +93,7 @@
       }
     ],
     "react/jsx-no-target-blank": "off",
+    "react/prop-types": "off",
     "curly": "warn",
     "dot-notation": "warn",
     "eol-last": "warn",
