@@ -1,6 +1,17 @@
 export type User = {
-  name: string;
-  username: string;
-  profilePictureUrl: string;
-  createdAt: string;
+  name: {
+    first: string;
+    last: string;
+  };
+  picture: {
+    large: string;
+  };
+  dob: {
+    date: string;
+    age: number;
+  };
+  location: {
+    city: string;
+    country: string;
+  };
 };
