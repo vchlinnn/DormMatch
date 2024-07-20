@@ -10,34 +10,16 @@ import {
 import BottomBar from '../components/BottomBar';
 import Swipes from '../components/Swipes';
 import TopBar from '../components/TopBar';
-
-// Define the type for the user object
-type AppUser = {
-  name: {
-    first: string;
-    last: string;
-  };
-  picture: {
-    large: string;
-  };
-  dob: {
-    date: string;
-    age: number;
-  };
-  location: {
-    city: string;
-    country: string;
-  };
-};
+import { User } from '../types/User';
 
 export default function App() {
-  const [users, setUsers] = useState<AppUser[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const swipesRef = useRef<Swipeable>(null); // Replace 'any' with 'Swipeable'
 
   const fetchUsers = useCallback(async () => {
     try {
-      const { data } = await axios.get<{ results: AppUser[] }>(
+      const { data } = await axios.get<{ results: User[] }>(
         'https://randomuser.me/api/?results=50',
       );
       setUsers(data.results);
