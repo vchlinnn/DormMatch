@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Image,
-  ImageStyle,
-  StyleSheet,
-  Text,
-  TextStyle,
-  View,
-  ViewStyle,
-} from 'react-native';
+import { Image, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
 // Define the type for the user object
@@ -43,36 +35,29 @@ const SwipeableImage: React.FC<SwipeableImageProps> = ({
 }) => {
   return (
     <View>
-      <Image
-        source={{ uri: user.picture.large }}
-        style={styles.photo as ImageStyle}
-      />
+      <Image source={{ uri: user.picture.large }} style={styles.photo} />
       {willLike && (
-        <View style={styles.likeBox as ViewStyle}>
+        <View style={styles.likeBox}>
           <Text style={{ ...styles.textPrimary, color: '#64EDCC' }}>LIKE</Text>
         </View>
       )}
       {willPass && (
-        <View style={styles.passBox as ViewStyle}>
+        <View style={styles.passBox}>
           <Text style={{ ...styles.textPrimary, color: '#F06795' }}>NOPE</Text>
         </View>
       )}
-      <View style={styles.textContainer as ViewStyle}>
-        <View style={styles.textRow as ViewStyle}>
-          <Text style={[styles.textPrimary, styles.textShadow] as TextStyle[]}>
+      <View style={styles.textContainer}>
+        <View style={styles.textRow}>
+          <Text style={[styles.textPrimary, styles.textShadow]}>
             {user.name.first}
           </Text>
-          <Text
-            style={[styles.textSecondary, styles.textShadow] as TextStyle[]}
-          >
+          <Text style={[styles.textSecondary, styles.textShadow]}>
             {user.dob.age}
           </Text>
         </View>
-        <View style={styles.textRow as ViewStyle}>
+        <View style={styles.textRow}>
           <FontAwesome name="map-marker" size={20} color="white" />
-          <Text
-            style={[styles.textSecondary, styles.textShadow] as TextStyle[]}
-          >
+          <Text style={[styles.textSecondary, styles.textShadow]}>
             {user.location.city}
           </Text>
         </View>
