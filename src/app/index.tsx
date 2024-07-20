@@ -77,6 +77,7 @@ export default function App() {
                   users={users}
                   handleLike={handleLike}
                   handlePass={handlePass}
+                  swipesRef={swipesRef}
                 />
               ),
           )}
