@@ -16,10 +16,10 @@ const BottomBar: React.FC<BottomBarProps> = ({
     <View style={styles.container}>
       <View />
       <TouchableOpacity style={styles.button} onPress={handlePassPress}>
-        <FontAwesome name="times" size={27} color="#F06795" />
+        <FontAwesome name="times" size={27} color="#416499" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handleLikePress}>
-        <FontAwesome name="heart" size={27} color="#64EDCC" />
+        <FontAwesome name="check" size={27} color="#416499" />
       </TouchableOpacity>
       <View />
     </View>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   button: {
     width: 50,
     height: 50,
-    backgroundColor: 'white',
+    backgroundColor: '#E9F3FD',
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
