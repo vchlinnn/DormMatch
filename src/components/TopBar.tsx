@@ -24,21 +24,10 @@ export default function TopBar() {
     <View style={styles.container}>
       {/* First bar */}
       <View style={styles.iconBar}>
-        <FontAwesome5 name="comments" size={27} color="white" />
         <MaterialIcons name="home" size={29} color="pink" />
-        <FontAwesome name="user" size={27} color="white" />
+        <FontAwesome5 name="comments" size={27} color="#5c5c5c" />
+        <FontAwesome name="user" size={27} color="#5c5c5c" />
       </View>
-
-      {/* Padding between text bar and dropdown bar */}
-      <View style={styles.paddingBetweenBars} />
-
-      {/* Second bar with text */}
-      <View style={styles.textBar}>
-        <Text style={styles.text}>Home Feed</Text>
-      </View>
-
-      {/* Padding between text bar and dropdown bar */}
-      <View style={styles.paddingBetweenBars} />
 
       {/* Dropdown Bar */}
       <DropdownBar text="Filter" />
@@ -49,7 +38,7 @@ export default function TopBar() {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column', // Column layout for stacking icon bars vertically
-    backgroundColor: 'grey',
+    backgroundColor: 'white',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
