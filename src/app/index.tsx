@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Alert, StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, Text, View } from 'react-native';
 import axios from 'axios';
 import Constants from 'expo-constants';
 import {
@@ -82,6 +82,13 @@ export default function App() {
               ),
           )}
       </View>
+      <View style={styles.textArea}>
+        <Text style={styles.text}>
+          Hi! My name is Linh and I’m a computer science major at Grinnell
+          College. I love painting and reading during my free time. I also have
+          an orange cat named Squirrel. Nice to meet you!
+        </Text>
+      </View>
       <BottomBar
         handleLikePress={handleLikePress}
         handlePassPress={handlePassPress}
@@ -94,18 +101,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: Constants.statusBarHeight,
+    backgroundColor: 'white',
   },
   swipes: {
     flex: 1,
     padding: 10,
     paddingTop: 8,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
-    elevation: 7,
+  },
+  textArea: {
+    flex: 0.5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#E9F3FD',
+    paddingHorizontal: 20,
+  },
+  text: {
+    fontSize: 16,
+    color: 'black',
   },
 });

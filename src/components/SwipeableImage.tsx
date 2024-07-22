@@ -38,12 +38,12 @@ const SwipeableImage: React.FC<SwipeableImageProps> = ({
       <Image source={{ uri: user.picture.large }} style={styles.photo} />
       {willLike && (
         <View style={styles.likeBox}>
-          <Text style={{ ...styles.textPrimary, color: '#64EDCC' }}>LIKE</Text>
+          <Text style={{ ...styles.textPrimary, color: '#E9F3FD' }}>LIKE</Text>
         </View>
       )}
       {willPass && (
         <View style={styles.passBox}>
-          <Text style={{ ...styles.textPrimary, color: '#F06795' }}>NOPE</Text>
+          <Text style={{ ...styles.textPrimary, color: '#E9F3FD' }}>NOPE</Text>
         </View>
       )}
       <View style={styles.textContainer}>
@@ -81,12 +81,12 @@ const styles = StyleSheet.create({
   likeBox: {
     ...boxStyle,
     left: 40,
-    borderColor: '#64EDCC',
+    borderColor: '#E9F3FD',
   },
   passBox: {
     ...boxStyle,
     right: 40,
-    borderColor: '#F06795',
+    borderColor: '#E9F3FD',
   },
   photo: {
     height: '100%',
