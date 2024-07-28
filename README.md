@@ -1,1 +1,1 @@
-# mels-app
+# DormMatch-mobile-app
